@@ -1,0 +1,42 @@
+name: hustler_syn
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.0
+  get: ^4.6.6
+  provider: ^6.1.2
+  table_calendar: ^3.1.2
+  google_fonts: ^6.2.1
+  device_preview: ^1.1.0
+  flutter_svg: ^2.0.7
+  mobile_scanner: ^7.0.1
+  dotted_line: ^3.0.0
+  convex_bottom_bar: ^3.2.0
+  qr_flutter: ^4.1.0
+  avatar_stack: ^3.0.0
+  pinput: ^5.0.2
+  flutter_emoji_feedback: ^1.0.3
+  image_picker: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - images/dynamic_assets/
+    - images/static_assets/
+    - images/icons_assets/
