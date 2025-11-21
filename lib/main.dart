@@ -1,13 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
+import 'package:hustler_syn/firebase_options.dart';
 import 'package:hustler_syn/screens/on_boarding/splash_screen.dart';
 
-void main() {
-  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print("✅ Firebase connected successfully!");
+  } catch (e) {
+    print("❌ Firebase initialization failed: $e");
+  }
+  printFirebaseProjectName();
+  runApp(const MyApp());
 }
+
+void printFirebaseProjectName() {}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

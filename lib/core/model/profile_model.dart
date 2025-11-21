@@ -1,5 +1,3 @@
-
-
 import 'package:hustler_syn/core/model/service_price_model.dart';
 
 class ProfileModel {
@@ -26,4 +24,48 @@ class ProfileModel {
     this.servicePrices,
     this.tags,
   });
+
+  /// ---------------------------
+  /// FROM JSON
+  /// ---------------------------
+  factory ProfileModel.fromJson(Map<String, dynamic> json) {
+    return ProfileModel(
+      id: json['id'],
+      image: json['image'],
+      name: json['name'],
+      role: json['role'],
+      rating: json['rating']?.toDouble(),
+      distance: json['distance'],
+      isVerified: json['isVerified'],
+      description: json['description'],
+      servicePrices: json['servicePrices'] != null
+          ? (json['servicePrices'] as List)
+              .map((e) => ServicePrice.fromJson(e))
+              .toList()
+          : [],
+      tags: json['tags'] != null
+          ? List<String>.from(json['tags'])
+          : [],
+    );
+  }
+
+  /// ---------------------------
+  /// TO JSON
+  /// ---------------------------
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'image': image,
+      'name': name,
+      'role': role,
+      'rating': rating,
+      'distance': distance,
+      'isVerified': isVerified,
+      'description': description,
+      'servicePrices': servicePrices != null
+          ? servicePrices!.map((e) => e.toJson()).toList()
+          : [],
+      'tags': tags ?? [],
+    };
+  }
 }
