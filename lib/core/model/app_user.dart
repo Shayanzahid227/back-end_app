@@ -1,6 +1,6 @@
 import 'package:hustler_syn/core/model/service_price_model.dart';
 
-class UserModel {
+class AppUserModel {
   String? id;
   String? image;
   String? name;
@@ -10,7 +10,7 @@ class UserModel {
   String? phoneNumber;
   String? description;
 
-  UserModel({
+  AppUserModel({
     this.id,
     this.image,
     this.name,
@@ -23,8 +23,8 @@ class UserModel {
   /// ---------------------------
   /// FROM JSON
   /// ---------------------------
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory AppUserModel.fromJson(Map<String, dynamic> json) {
+    return AppUserModel(
       id: json['id'],
       image: json['image'],
       name: json['name'],

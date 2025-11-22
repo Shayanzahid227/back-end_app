@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -6,15 +5,12 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hustler_syn/core/constant/app_assets.dart';
 import 'package:hustler_syn/screens/auth/client_account/client_account_view_model.dart';
 import 'package:hustler_syn/screens/auth/main_auth_screen/main_auth_screen.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/constant/auth_text_field.dart';
 import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
-
-import '../../../core/constant/app_assets.dart';
 
 class ClientAccountScreen extends StatelessWidget {
   const ClientAccountScreen({super.key});
