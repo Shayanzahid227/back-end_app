@@ -8,8 +8,9 @@ import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
 import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
+import 'package:hustler_syn/core/custom_widgets/custom_contianer.dart';
 import 'package:hustler_syn/screens/profile/privacy_and_terms/privacy_and_terms.dart';
-import 'package:hustler_syn/screens/profile/referral_and_rewards/referral_and_reward_screen.dart';
+
 // Local imports for this example
 
 class HelpSupportScreen extends StatelessWidget {

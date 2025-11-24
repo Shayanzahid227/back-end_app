@@ -81,6 +81,23 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               20.verticalSpace,
+              Text('Description', style: style18_600),
+              8.verticalSpace,
+              TextFormField(
+                controller: viewModel.descriptionController,
+                style: const TextStyle(color: greyColor),
+                decoration: customAuthField.copyWith(hintText: 'Description'),
+              ),
+              20.verticalSpace,
+              Text('Phone number', style: style18_600),
+              8.verticalSpace,
+              TextFormField(
+                controller: viewModel.phoneNumberController,
+                style: const TextStyle(color: greyColor),
+                decoration:
+                    customAuthField.copyWith(hintText: '+92 318 6444164'),
+              ),
+              20.verticalSpace,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50.0),
                 child: CustomButton(

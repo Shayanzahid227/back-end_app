@@ -1,12 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
+import 'package:hustler_syn/core/custom_widgets/profile_card.dart';
 import 'package:hustler_syn/firebase_options.dart';
 import 'package:hustler_syn/screens/auth/main_auth_screen/main_auth_screen.dart';
-import 'package:hustler_syn/screens/on_boarding/splash_screen.dart';
+import 'package:hustler_syn/screens/home/home_screen.dart';
+import 'package:hustler_syn/screens/post/all_post_screen.dart';
+import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
+import 'package:hustler_syn/screens/root_screen/root_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,9 +20,13 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    print("✅ Firebase connected successfully!");
+    if (kDebugMode) {
+      print("✅ Firebase connected successfully!");
+    }
   } catch (e) {
-    print("❌ Firebase initialization failed: $e");
+    if (kDebugMode) {
+      print("❌ Firebase initialization failed: $e");
+    }
   }
   printFirebaseProjectName();
   runApp(const MyApp());
@@ -53,7 +62,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: AuthScreen());
+            home: const RootScreen());
       },
     );
   }

@@ -8,10 +8,10 @@ import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
 import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
+import 'package:hustler_syn/core/custom_widgets/custom_contianer.dart';
 import 'package:hustler_syn/core/model/profile_model.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
 import 'package:hustler_syn/screens/home/check_out/check_out_view_model.dart';
-import 'package:hustler_syn/screens/profile/referral_and_rewards/referral_and_reward_screen.dart';
 import 'package:provider/provider.dart';
 
 class Checkout extends StatelessWidget {

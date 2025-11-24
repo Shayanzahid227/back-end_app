@@ -13,13 +13,11 @@ class DataBaseServices {
   ///
   Future<bool> setUserDate(AppUserModel appUser) async {
     try {
-      await _db
-          .collection('user_data')
-          .doc(appUser.id)
-          .set(appUser.toJson());
+      await _db.collection('user_data').doc(appUser.id).set(appUser.toJson());
       Get.snackbar("Success", 'User information saved');
       return true;
     } catch (e) {
+      print('error: $e');
       Get.snackbar("Error", 'User information not saved due to $e');
       return false;
     }

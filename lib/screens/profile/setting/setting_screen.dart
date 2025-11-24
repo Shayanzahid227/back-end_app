@@ -7,11 +7,9 @@ import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
 import 'package:hustler_syn/screens/profile/help_and_support/help_and_support.dart';
-import 'package:hustler_syn/screens/profile/id_verification/id_verification.dart';
 import 'package:hustler_syn/screens/profile/notification_screen/notification_screen.dart';
-import 'package:hustler_syn/screens/profile/payments_and_subscription/payment_and_subscription.dart';
 import 'package:hustler_syn/screens/profile/privacy_and_terms/privacy_and_terms.dart';
-import 'package:hustler_syn/screens/profile/referral_and_rewards/referral_and_reward_screen.dart';
+
 
 // Placeholder for your text styles. You should define these globally in your project.
 
@@ -44,39 +42,9 @@ class SettingsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      buildSettingItem(
-                        onTap: () {
-                          Get.to(PaymentSubscriptionScreen());
-                        },
-                        image: AppAssets().s1Icon,
-                        title: 'Payments & Subscription',
-                        subtitle: 'Manage billing and plans',
-                      ),
-                      buildSettingItem(
-                        onTap: () {
-                          Get.to(ReferralAndRewardScreen());
-                        },
-                        image: AppAssets().s2Icon,
-                        title: 'Referral & Rewards',
-                        subtitle: 'Share and earn rewards',
-                      ),
-                      buildSettingItem(
-                        onTap: () {
-                          Get.to(IdVerificationScreen());
-                        },
-                        image: AppAssets().s3Icon,
-                        title: 'ID Verification',
-                        subtitle: 'Verify your identity',
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            buildVerifiedBadge(),
-                            SizedBox(width: 8.w),
-                            Icon(Icons.arrow_forward_ios,
-                                color: greyColor, size: 16.w),
-                          ],
-                        ),
-                      ),
+                     
+                    
+                     
                     ],
                   ),
                 ),

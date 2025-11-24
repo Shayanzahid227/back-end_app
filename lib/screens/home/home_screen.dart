@@ -5,6 +5,7 @@ import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/action_button.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
+import 'package:hustler_syn/core/custom_widgets/post_card.dart';
 import 'package:hustler_syn/core/custom_widgets/profile_card.dart';
 import 'package:hustler_syn/core/model/profile_model.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hustler_syn/screens/home/home_screen_view_model.dart';
+import 'package:hustler_syn/screens/post/all_post_screen.dart';
 import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 import 'package:hustler_syn/screens/profile/notification_screen/notification_screen.dart';
 import 'package:provider/provider.dart';
@@ -86,31 +88,12 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
-          body: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      final currentProfile = model.profiles[model.currentIndex];
-                      Get.to(() => Information(
-                            profileModel: currentProfile,
-                            index: model.currentIndex,
-                          ));
-                    },
-                    child: ProfileCard(
-                      profileModel: model.profiles[model.currentIndex],
-                    ),
-                  ),
-                  SizedBox(height: 25),
-                  ActionButtons(
-                    onClose: model.nextProfile,
-                    onFavorite: model.favoriteProfile,
-                  ),
-                ],
-              ),
-            ),
+          body: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+            itemCount: model.allPosts.length,
+            itemBuilder: (context, index) {
+              return PostCard(post: model.allPosts[index]);
+            },
           ),
         ),
       ),

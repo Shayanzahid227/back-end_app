@@ -14,6 +14,8 @@ class SignUpViewModel extends BaseViewModel {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
 
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
@@ -44,7 +46,11 @@ class SignUpViewModel extends BaseViewModel {
     notifyListeners();
 
     final result = await authServices.registerUser(appUser);
-
+    
+    final createdUid = result.user?.uid;
+    if (createdUid != null) {
+      appUser.id = createdUid;
+    }
     _isLoading = false;
     notifyListeners();
 
@@ -67,10 +73,20 @@ class SignUpViewModel extends BaseViewModel {
       _showError("Please enter your full name");
       return false;
     }
+    if (phoneNumberController.text.trim().isEmpty) {
+      _showError("Please enter your phone number");
+      return false;
+    }
+    if (descriptionController.text.trim().isEmpty) {
+      _showError("Please enter description");
+      return false;
+    }
 
     if (emailController.text.trim().isEmpty ||
         !emailController.text.contains("@") ||
-        !emailController.text.contains(".")) {
+        !emailController.text.contains(".") ||
+        phoneNumberController.text.trim().isEmpty ||
+        descriptionController.text.trim().isEmpty) {
       _showError("Please enter a valid email");
       return false;
     }
@@ -98,6 +114,8 @@ class SignUpViewModel extends BaseViewModel {
     appUser.name = fullNameController.text.trim();
     appUser.email = emailController.text.trim();
     appUser.password = passwordController.text.trim();
+    appUser.phoneNumber = phoneNumberController.text.trim();
+    appUser.description = descriptionController.text.trim();
 
     return true;
   }
@@ -113,6 +131,8 @@ class SignUpViewModel extends BaseViewModel {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    phoneNumberController.dispose();
+    descriptionController.dispose();
     super.dispose();
   }
 }

@@ -1,10 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hustler_syn/core/constant/auth_text_field.dart';
 
 import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/colors.dart' as AppColors;
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
+import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
+import 'package:hustler_syn/screens/auth/client_account/client_account-screen.dart';
+import 'package:hustler_syn/screens/neccessary_widget/doted_border_container.dart';
 import 'package:hustler_syn/screens/post/all_post_view_model.dart';
 import 'package:hustler_syn/screens/post/create_post_screen.dart';
 
@@ -13,195 +20,278 @@ import 'package:provider/provider.dart';
 class AllPostScreen extends StatelessWidget {
   const AllPostScreen({super.key});
 
-  void _navigateToCreatePost(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const CreateNewPostScreen(),
-      ),
-    );
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => AllPostViewModel(),
       child: Consumer<AllPostViewModel>(
-        builder: (context, model, child) => Scaffold(
+        builder: (context, viewModel, child) => Scaffold(
           backgroundColor: AppColors.backGroundColor,
-          appBar: const CustomAppBar(
-            title: "Post",
-            showRedIcon: true,
-          ),
-          body: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
-            itemCount: model.allPosts.length,
-            itemBuilder: (context, index) {
-              return PostCard(post: model.allPosts[index]);
-            },
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => _navigateToCreatePost(context),
-            backgroundColor: AppColors.primaryColor,
-            shape: const CircleBorder(),
-            child: Icon(
-              Icons.add_circle_outline_outlined,
-              size: 30.w,
-              color: backGroundColor,
+          appBar: const CustomAppBar(title: "Create New Post"),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.all(20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ///
+                ///. job title
+                ///
+                Text('Job Title', style: style18_600.copyWith()),
+                8.verticalSpace,
+                TextField(
+                    decoration: customAuthField.copyWith(
+                        hintText: "e.g., Need a Flutter Developer")),
+                20.verticalSpace,
+
+                ///
+                ///. description
+                ///
+                Text('Description', style: style18_600.copyWith()),
+                8.verticalSpace,
+                TextField(
+                    maxLines: 3,
+                    decoration: customAuthField.copyWith(
+                        hintText: "Describe what you need help with...")),
+                20.verticalSpace,
+
+                ///
+                ///. category section
+                ///
+                Text('Category', style: style18_600.copyWith()),
+                8.verticalSpace,
+
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        width: 0.8,
+                        color: AppColors.borderColor,
+                      )),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      dropdownColor: AppColors.primaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                      focusColor: Colors.transparent,
+                      value: viewModel.selectCategory,
+                      hint: Text(
+                        "Please Select",
+                        style: style14_500.copyWith(color: AppColors.greyColor),
+                      ),
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: AppColors.greyColor,
+                      ),
+                      isExpanded: true,
+                      style: style14_500.copyWith(color: AppColors.whiteColor),
+                      items: viewModel.categories.map((String categoryName) {
+                        return DropdownMenuItem(
+                          value: categoryName,
+                          child: Text(
+                            categoryName,
+                            style: style14_500.copyWith(
+                                color: AppColors.greyColor),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        viewModel.selectCategoryClick(value);
+                      },
+                    ),
+                  ),
+                ),
+                20.verticalSpace,
+
+                ///
+                ///. budget price section
+                ///
+                Text('Budget Price',
+                    style: style18_600.copyWith(color: Colors.white)),
+                8.verticalSpace,
+                TextField(
+                    decoration:
+                        customAuthField.copyWith(hintText: "e.g., \$200")),
+                20.verticalSpace,
+
+                ///
+                ///. add and remove language section
+                ///
+                _buildLanguagesSection(context, viewModel),
+                20.verticalSpace,
+
+                ///
+                ///. use my current location
+                ///
+                Text('Job Location',
+                    style: style18_600.copyWith(color: Colors.white)),
+                8.verticalSpace,
+                TextField(
+                    decoration: customAuthField.copyWith(
+                        prefixIcon: Icon(
+                          Icons.location_on_outlined,
+                          color: AppColors.greyColor,
+                        ),
+                        hintText: "Use my Current location")),
+                30.verticalSpace,
+
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Use my current location',
+                      style:
+                          style14_600.copyWith(color: AppColors.primaryColor),
+                    )),
+                20.verticalSpace,
+                Text('Job Images',
+                    style: style18_600.copyWith(color: Colors.white)),
+                8.verticalSpace,
+
+                ///
+                ///. image adding section
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildBusinessImagePicker(context, viewModel, 0),
+                    _buildBusinessImagePicker(context, viewModel, 1),
+                    _buildBusinessImagePicker(context, viewModel, 2),
+                    _buildBusinessImagePicker(context, viewModel, 3),
+                  ],
+                ),
+                8.verticalSpace,
+                Text(
+                  'You can upload 4 images',
+                  style: style12_500.copyWith(
+                      fontWeight: FontWeight.w400, color: AppColors.greyColor),
+                ),
+                30.verticalSpace,
+
+                ///
+                ///. submit button
+                ///
+                CustomButton(
+                    text: 'Submit Post',
+                    onTap: () {
+                      Get.snackbar(
+                          colorText: AppColors.primaryColor,
+                          'Success',
+                          'Post created successfully');
+                    }),
+                50.verticalSpace,
+              ],
             ),
           ),
         ),
       ),
     );
   }
-}
 
-class PostCard extends StatelessWidget {
-  final PostModel post;
+  ///
+  ///. language section
+  ///
 
-  const PostCard({super.key, required this.post});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 15.h),
-      padding: EdgeInsets.all(15.w),
-      decoration: BoxDecoration(
-        color: planCardColor,
-        borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(color: borderColor),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                radius: 25.r,
-                backgroundImage: AssetImage(post.profileImage),
+  Widget _buildLanguagesSection(
+    BuildContext context,
+    AllPostViewModel viewModel,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Languages Known', style: style18_600),
+        10.verticalSpace,
+        Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: viewModel.languageInputController,
+                decoration: customAuthField.copyWith(
+                  hintText: 'Add a language',
+                ),
+                style: const TextStyle(color: AppColors.greyColor),
               ),
-              SizedBox(width: 10.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(post.userName,
-                            style: style16_600.copyWith(color: Colors.white)),
-                        Wrap(
-                          spacing: 8.w,
-                          runSpacing: 5.h,
-                          children: [post.category]
-                              .map((tag) =>
-                                  _buildTag(tag, AppColors.primaryColor))
-                              .toList(),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.watch_later_outlined,
-                          color: greyColor,
-                          size: 16.w,
-                        ),
-                        SizedBox(width: 5.w),
-                        Text(post.timeAgo,
-                            style: style14_400.copyWith(
-                                color: AppColors.greyColor)),
-                      ],
-                    ),
-                  ],
+            ),
+            10.horizontalSpace,
+            SizedBox(
+              height: 50.h,
+              child: ElevatedButton(
+                onPressed: viewModel.addLanguage,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  elevation: 0,
+                ),
+                child: Text(
+                  'Add',
+                  style: style14_600.copyWith(color: AppColors.darkPurpleColor),
                 ),
               ),
-            ],
-          ),
-          SizedBox(height: 15.h),
-          Text(
-            post.postTitle,
-            style: style18_600.copyWith(fontWeight: FontWeight.w700),
-          ),
-          SizedBox(height: 8.h),
-          Text(
-            post.jobDescription,
-            style: style14_400.copyWith(color: greyColor),
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-          ),
-          SizedBox(height: 15.h),
-          Wrap(
-            spacing: 8.w,
-            runSpacing: 5.h,
-            children: post.languageKnown
-                .map((language) => Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: borderColor),
-                        borderRadius: BorderRadius.circular(999.r),
-                      ),
-                      child: Text(
-                        language,
-                        style: style12_600,
-                      ),
-                    ))
-                .toList(),
-          ),
-// .
-
-          ///
-          /// Category Tags
-          ///
-
-          SizedBox(height: 15.h),
-          Divider(
-            color: borderColor,
-          ),
-          SizedBox(height: 8.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildDetailItem(Icons.location_on_outlined, post.jobLocation),
-              _buildDetailItem(null, post.budgetPrice,
-                  textStyle: style16_600.copyWith(color: primaryColor)),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTag(String text, Color color) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Text(
-        text,
-        style: style12_500.copyWith(color: color),
-      ),
-    );
-  }
-
-  Widget _buildDetailItem(IconData? icon, String text, {TextStyle? textStyle}) {
-    final TextStyle defaultStyle = style14_400.copyWith(color: greyColor);
-
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (icon != null) ...[
-          Icon(icon, size: 16.w, color: greyColor),
-          SizedBox(width: 4.w),
-        ],
-        Text(
-          text,
-          style: textStyle ?? defaultStyle,
+            ),
+          ],
+        ),
+        15.verticalSpace,
+        Wrap(
+          spacing: 10.w,
+          runSpacing: 10.w,
+          children: viewModel.languages
+              .map(
+                (lang) => LanguageChip(
+                  language: lang,
+                  onRemove: () => viewModel.removeLanguage(lang),
+                ),
+              )
+              .toList(),
         ),
       ],
+    );
+  }
+
+  ///
+  ///. business image picker --> 4 pic in row
+  ///
+  Widget _buildBusinessImagePicker(
+    BuildContext context,
+    AllPostViewModel viewModel,
+    int index,
+  ) {
+    return GestureDetector(
+      onTap: () => viewModel.pickBusinessImage(index),
+      child: DashedBorderContainer(
+        width: 80.w,
+        height: 80.w,
+        child: kIsWeb
+            ? viewModel.businessImagesWeb[index] != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: Image.memory(
+                      viewModel.businessImagesWeb[index]!,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Icon(
+                    Icons.file_upload_outlined,
+                    color: AppColors.greyColor,
+                    size: 40,
+                  )
+            : viewModel.businessImages[index] != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: Image.file(
+                      viewModel.businessImages[index]!,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : Icon(
+                    Icons.file_upload_outlined,
+                    color: AppColors.greyColor,
+                    size: 40,
+                  ),
+      ),
     );
   }
 }

@@ -24,7 +24,7 @@ class ServicePrice {
   }
 
   /// ---------------------------
-  /// TO JSON
+  /// TO JSON 
   /// ---------------------------
   Map<String, dynamic> toJson() {
     return {

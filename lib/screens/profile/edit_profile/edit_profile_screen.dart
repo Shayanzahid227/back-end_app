@@ -154,56 +154,6 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                         20.verticalSpace,
                         Text(
-                          "Language",
-                          style: style18_600,
-                        ),
-                        8.verticalSpace,
-                        DropdownButtonFormField<String>(
-                          dropdownColor: backGroundColor,
-                          borderRadius: BorderRadius.circular(10),
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_outlined,
-                            color: AppColors.greyColor,
-                          ),
-                          decoration: customAuthField.copyWith(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: primaryColor),
-                                borderRadius: BorderRadius.circular(16.r),
-                              ),
-                              hintText: "Select Language",
-                              hintStyle:
-                                  style14_500.copyWith(color: whiteColor)),
-                          style: style14_500.copyWith(color: whiteColor),
-                          items: List.generate(9, (index) {
-                            final categories = [
-                              "English",
-                              "British",
-                              "Chinese",
-                              "Spanish",
-                              "Russian",
-                              "Urdu",
-                              "Punjabi",
-                              "Pashto",
-                              "European",
-                            ];
-                            String categoryName = index < categories.length
-                                ? categories[index]
-                                : "Category ${index + 1}";
-
-                            return DropdownMenuItem(
-                              value: categoryName,
-                              child: Text(
-                                categoryName,
-                                style: style14_500.copyWith(color: greyColor),
-                              ),
-                            );
-                          }),
-                          onChanged: (value) {
-                            // Handle category selection
-                          },
-                        ),
-                        20.verticalSpace,
-                        Text(
                           "About me",
                           style: style18_600,
                         ),

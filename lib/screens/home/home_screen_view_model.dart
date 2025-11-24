@@ -1,127 +1,244 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hustler_syn/core/base_view_model/base_view_model.dart';
 import 'package:hustler_syn/core/constant/app_assets.dart';
 import 'package:hustler_syn/core/model/profile_model.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
+import 'package:hustler_syn/screens/post/all_post_view_model.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeScreenViewModel extends BaseViewModel {
-  int currentIndex = 0;
+  // int currentIndex = 0;
 
-  final List<ProfileModel> profiles = [
-    ProfileModel(
-        id: '1',
-        image: AppAssets().boys,
-        name: "Sarah Johnson",
-        role: "Professional Cleaner",
-        rating: 4.8,
-        distance: "3.2 km",
-        tags: [
-          "Emergency Repairs",
-          "Installation",
-          "Maintenance"
-        ],
-        servicePrices: [
-          ServicePrice(
-            serviceName: "Basic Cleaning",
-            price: "R400",
-            description:
-                "Standard cleaning of living\nareas, bedrooms, kitchen, and\nbathrooms",
-            duration: "Duration: 3-7 hours",
-          ),
-          ServicePrice(
-            serviceName: "Deep Cleaning",
-            price: "R500",
-            description:
-                "Thorough cleaning including\nbaseboards, windows, and\nhard-to-reach areas",
-            duration: "Duration: 4-19 hours",
-          ),
-          ServicePrice(
-            serviceName: "Move-Out Cleaning",
-            price: "R250",
-            description: "Complete property cleaning\nfor moving purposes",
-            duration: "Duration: 1-3 hours",
-          ),
-        ]),
-    ProfileModel(
-        image: AppAssets().userImage,
-        name: "Mike Peters",
-        role: "Handyman Service",
-        rating: 4.5,
-        distance: "1.3 km",
-        tags: [
-          "Plumbing",
-          "Maintenance",
-          "Installation"
-        ],
-        servicePrices: [
-          ServicePrice(
-            serviceName: "Leak Repair",
-            price: "75.0",
-            description: "Fixing minor leaks in faucets and pipes.",
-            duration: "Duration: 2-7 hours",
-          ),
-          ServicePrice(
-            serviceName: "Fixture Installation",
-            price: "120.0",
-            description: "Installing sinks, toilets, and other fixtures.",
-            duration: "Duration: 2-3 hours",
-          ),
-        ]),
-    ProfileModel(
-        image: AppAssets().boys,
-        name: "John Doe",
-        role: "Electrician",
-        rating: 4.9,
-        distance: "0.8 km",
-        tags: [
-          "Wiring",
-          "Emergency Fix",
-          "Installation"
-        ],
-        servicePrices: [
-          ServicePrice(
-            serviceName: "Basic Cleaning",
-            price: "R400",
-            description:
-                "Standard cleaning of living\nareas, bedrooms, kitchen, and\nbathrooms",
-            duration: "Duration: 6-10 hours",
-          ),
-          ServicePrice(
-            serviceName: "Deep Cleaning",
-            price: "R500",
-            description:
-                "Thorough cleaning including\nbaseboards, windows, and\nhard-to-reach areas",
-            duration: "Duration: 5-8 hours",
-          ),
-          ServicePrice(
-            serviceName: "Move-Out Cleaning",
-            price: "R250",
-            description: "Complete property cleaning\nfor moving purposes",
-            duration: "Duration: 5-9 hours",
-          ),
-        ]),
-  ];
+  // final List<ProfileModel> profiles = [
+  //   ProfileModel(
+  //       id: '1',
+  //       image: AppAssets().boys,
+  //       name: "Sarah Johnson",
+  //       role: "Professional Cleaner",
+  //       rating: 4.8,
+  //       distance: "3.2 km",
+  //       tags: [
+  //         "Emergency Repairs",
+  //         "Installation",
+  //         "Maintenance"
+  //       ],
+  //       servicePrices: [
+  //         ServicePrice(
+  //           serviceName: "Basic Cleaning",
+  //           price: "R400",
+  //           description:
+  //               "Standard cleaning of living\nareas, bedrooms, kitchen, and\nbathrooms",
+  //           duration: "Duration: 3-7 hours",
+  //         ),
+  //         ServicePrice(
+  //           serviceName: "Deep Cleaning",
+  //           price: "R500",
+  //           description:
+  //               "Thorough cleaning including\nbaseboards, windows, and\nhard-to-reach areas",
+  //           duration: "Duration: 4-19 hours",
+  //         ),
+  //         ServicePrice(
+  //           serviceName: "Move-Out Cleaning",
+  //           price: "R250",
+  //           description: "Complete property cleaning\nfor moving purposes",
+  //           duration: "Duration: 1-3 hours",
+  //         ),
+  //       ]),
+  //   ProfileModel(
+  //       image: AppAssets().userImage,
+  //       name: "Mike Peters",
+  //       role: "Handyman Service",
+  //       rating: 4.5,
+  //       distance: "1.3 km",
+  //       tags: [
+  //         "Plumbing",
+  //         "Maintenance",
+  //         "Installation"
+  //       ],
+  //       servicePrices: [
+  //         ServicePrice(
+  //           serviceName: "Leak Repair",
+  //           price: "75.0",
+  //           description: "Fixing minor leaks in faucets and pipes.",
+  //           duration: "Duration: 2-7 hours",
+  //         ),
+  //         ServicePrice(
+  //           serviceName: "Fixture Installation",
+  //           price: "120.0",
+  //           description: "Installing sinks, toilets, and other fixtures.",
+  //           duration: "Duration: 2-3 hours",
+  //         ),
+  //       ]),
+  //   ProfileModel(
+  //       image: AppAssets().boys,
+  //       name: "John Doe",
+  //       role: "Electrician",
+  //       rating: 4.9,
+  //       distance: "0.8 km",
+  //       tags: [
+  //         "Wiring",
+  //         "Emergency Fix",
+  //         "Installation"
+  //       ],
+  //       servicePrices: [
+  //         ServicePrice(
+  //           serviceName: "Basic Cleaning",
+  //           price: "R400",
+  //           description:
+  //               "Standard cleaning of living\nareas, bedrooms, kitchen, and\nbathrooms",
+  //           duration: "Duration: 6-10 hours",
+  //         ),
+  //         ServicePrice(
+  //           serviceName: "Deep Cleaning",
+  //           price: "R500",
+  //           description:
+  //               "Thorough cleaning including\nbaseboards, windows, and\nhard-to-reach areas",
+  //           duration: "Duration: 5-8 hours",
+  //         ),
+  //         ServicePrice(
+  //           serviceName: "Move-Out Cleaning",
+  //           price: "R250",
+  //           description: "Complete property cleaning\nfor moving purposes",
+  //           duration: "Duration: 5-9 hours",
+  //         ),
+  //       ]),
+  // ];
 
-  void nextProfile() {
-    if (currentIndex < profiles.length - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
+  // void nextProfile() {
+  //   if (currentIndex < profiles.length - 1) {
+  //     currentIndex++;
+  //   } else {
+  //     currentIndex = 0;
+  //   }
+  //   notifyListeners();
+  // }
+
+  // void favoriteProfile() {
+  //   if (kDebugMode) {
+  //     print("Favorited: ${profiles[currentIndex].name}");
+  //   }
+  //   nextProfile();
+  //   Get.snackbar(
+  //     "Favorited",
+  //     "${profiles[currentIndex].name} has been added to your favorites.",
+  //     snackPosition: SnackPosition.BOTTOM,
+  //   );
+  // }
+  ///
+  /// for language adding and
+  ///
+  final TextEditingController languageInputController = TextEditingController();
+  final List<String> languages = [];
+  void addLanguage() {
+    final language = languageInputController.text.trim();
+    if (language.isNotEmpty && !languages.contains(language)) {
+      languages.add(language);
+      languageInputController.clear();
+      notifyListeners();
     }
+  }
+
+  void removeLanguage(String language) {
+    languages.remove(language);
     notifyListeners();
   }
 
-  void favoriteProfile() {
-    if (kDebugMode) {
-      print("Favorited: ${profiles[currentIndex].name}");
+  @override
+  void dispose() {
+    languageInputController.dispose();
+    super.dispose();
+  }
+
+  String? selectCategory;
+
+  selectCategoryClick(String? category) {
+    selectCategory = category;
+    notifyListeners(); // <-- THIS IS THE CRUCIAL CALL
+  }
+
+  final categories = [
+    "Plumber",
+    "Car Mechanic",
+    "Electrician",
+    "Painter",
+    "Carpenter",
+    "Welder",
+    "Driver",
+    "Cleaner",
+    "Mason",
+  ];
+
+  ///
+  ///. all post list
+  ///
+  final List<PostModel> allPosts = [
+    PostModel(
+      profileImage: AppAssets().boys,
+      userName: "John Doe",
+      timeAgo: "2h ago",
+      postTitle: "Need a Flutter Developer",
+      jobDescription: "Looking for a Flutter dev to build a basic app",
+      category: "Plumber",
+      budgetPrice: "R 200",
+      languageKnown: ["English", "Spanish"],
+      jobLocation: "Midrand, Gauteng",
+    ),
+    PostModel(
+      profileImage: AppAssets().userImage,
+      userName: "Sarah Connor",
+      timeAgo: "5m ago",
+      postTitle: "UI/UX Design for E-commerce",
+      jobDescription: "Seeking a designer for a new online shop interface.",
+      category: "Designer",
+      budgetPrice: "R 500",
+      languageKnown: ["English"],
+      jobLocation: "Soweto, Gauteng",
+    ),
+    PostModel(
+      profileImage: AppAssets().boys,
+      userName: "Mike Chen",
+      timeAgo: "1d ago",
+      postTitle: "Carpentry for Custom Bookshelves",
+      jobDescription: "Expert carpenter required for custom built-in shelves.",
+      category: "Mechanic",
+      budgetPrice: "R 1200",
+      languageKnown: ["English", "Mandarin"],
+      jobLocation: "Makapanstad, North West",
+    ),
+    PostModel(
+      profileImage: AppAssets().userImage,
+      userName: "Sarah Connor",
+      timeAgo: "5m ago",
+      postTitle: "UI/UX Design for E-commerce",
+      jobDescription: "Seeking a designer for a new online shop interface.",
+      category: "Designer",
+      budgetPrice: "R 500",
+      languageKnown: ["English"],
+      jobLocation: "Soweto, Gauteng",
+    ),
+  ];
+
+  ///
+  ///. business image picker in a row in end of screen
+  ///
+  List<File?> businessImages = [null, null, null, null];
+  List<Uint8List?> businessImagesWeb = [null, null, null, null];
+
+  Future pickBusinessImage(int index) async {
+    final picker = ImagePicker();
+    final result = await picker.pickImage(source: ImageSource.gallery);
+    if (result == null) return;
+
+    if (kIsWeb) {
+      businessImagesWeb[index] = await result.readAsBytes();
+    } else {
+      businessImages[index] = File(result.path);
     }
-    nextProfile();
-    Get.snackbar(
-      "Favorited",
-      "${profiles[currentIndex].name} has been added to your favorites.",
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    notifyListeners();
   }
 }

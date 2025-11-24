@@ -1,3 +1,4 @@
+import 'package:hustler_syn/core/constant/app_assets.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
 
 class AppUserModel {
@@ -29,7 +30,7 @@ class AppUserModel {
       image: json['image'],
       name: json['name'],
       email: json['email'],
-      password: json['password'],
+  
       phoneNumber: json['phoneNumber'],
       description: json['description'],
     );
