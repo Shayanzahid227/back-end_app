@@ -1,6 +1,7 @@
 import 'package:hustler_syn/core/base_view_model/base_view_model.dart';
 import 'package:hustler_syn/core/constant/app_assets.dart';
-import 'package:flutter/material.dart';
+import 'package:hustler_syn/core/model/chat_mode.dart';
+import 'package:hustler_syn/core/model/message_model.dart';
 
 class ChatViewModel extends BaseViewModel {
   final List<ChatModel> chatList = [
@@ -78,33 +79,4 @@ class ChatViewModel extends BaseViewModel {
   ];
 }
 
-class ChatModel {
-  final String userImage;
-  final String userName;
-  final String userType;
-  final String lastChat;
-  final String timeAgo;
-  final String unreadSms;
 
-  ChatModel({
-    required this.userImage,
-    required this.userName,
-    required this.userType,
-    required this.lastChat,
-    required this.timeAgo,
-    required this.unreadSms,
-  });
-}
-
-// Model for individual message in the conversation screen
-class MessageModel {
-  final String text;
-  final String time;
-  final bool isSentByMe;
-
-  MessageModel({
-    required this.text,
-    required this.time,
-    required this.isSentByMe,
-  });
-}

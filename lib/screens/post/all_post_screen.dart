@@ -4,17 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hustler_syn/core/constant/auth_text_field.dart';
-
-import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/colors.dart' as AppColors;
 import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
 import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
-import 'package:hustler_syn/screens/auth/client_account/client_account-screen.dart';
+import 'package:hustler_syn/core/custom_widgets/langugae_chil.dart';
 import 'package:hustler_syn/screens/neccessary_widget/doted_border_container.dart';
 import 'package:hustler_syn/screens/post/all_post_view_model.dart';
-import 'package:hustler_syn/screens/post/create_post_screen.dart';
-
 import 'package:provider/provider.dart';
 
 class AllPostScreen extends StatelessWidget {

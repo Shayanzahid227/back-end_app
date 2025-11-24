@@ -5,6 +5,7 @@ import 'package:hustler_syn/core/constant/app_assets.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/colors.dart' as AppColors;
 import 'package:hustler_syn/core/constant/text_style.dart';
+import 'package:hustler_syn/core/model/message_model.dart';
 import 'package:hustler_syn/screens/chat/chat_view_model.dart';
 import 'package:provider/provider.dart';
 
