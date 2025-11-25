@@ -5,7 +5,7 @@ import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/screens/chat/chat_screen.dart';
 import 'package:hustler_syn/screens/discover/discover_screen.dart';
 import 'package:hustler_syn/screens/home/home_screen.dart';
-import 'package:hustler_syn/screens/post/all_post_screen.dart';
+import 'package:hustler_syn/screens/post/create_post_screen.dart';
 import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 import 'package:hustler_syn/screens/root_screen/root_view_model.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,7 @@ class RootScreen extends StatelessWidget {
   static final List<Widget> _screens = [
     Home(),
     DiscoverScreen(),
-    AllPostScreen(),
+    CreateNewPostScreen(),
     ChatScreen(),
     ProfileScreen(),
   ];

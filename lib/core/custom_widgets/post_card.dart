@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/core/constant/colors.dart' as AppColors;
 import 'package:hustler_syn/core/constant/text_style.dart';
-import 'package:hustler_syn/screens/post/all_post_view_model.dart';
+import 'package:hustler_syn/core/model/post_model.dart';
 
 class PostCard extends StatelessWidget {
   final PostModel post;

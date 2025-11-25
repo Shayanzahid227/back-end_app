@@ -6,9 +6,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hustler_syn/core/base_view_model/base_view_model.dart';
 import 'package:hustler_syn/core/constant/app_assets.dart';
+import 'package:hustler_syn/core/model/post_model.dart';
 import 'package:hustler_syn/core/model/profile_model.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
-import 'package:hustler_syn/screens/post/all_post_view_model.dart';
+import 'package:hustler_syn/screens/post/create_post_view_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomeScreenViewModel extends BaseViewModel {

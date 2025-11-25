@@ -10,7 +10,7 @@ import 'package:hustler_syn/firebase_options.dart';
 import 'package:hustler_syn/screens/auth/main_auth_screen/main_auth_screen.dart';
 import 'package:hustler_syn/screens/auth/main_auth_screen/sign_up/sign_up_screen.dart';
 import 'package:hustler_syn/screens/home/home_screen.dart';
-import 'package:hustler_syn/screens/post/all_post_screen.dart';
+import 'package:hustler_syn/screens/post/create_post_screen.dart';
 import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 import 'package:hustler_syn/screens/root_screen/root_screen.dart';
 
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: ProfileScreen());
+            home: Home());
       },
     );
   }

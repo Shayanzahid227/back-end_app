@@ -9,12 +9,12 @@ import 'package:hustler_syn/core/custom_widgets/post_card.dart';
 import 'package:hustler_syn/core/custom_widgets/profile_card.dart';
 import 'package:hustler_syn/core/model/profile_model.dart';
 import 'package:hustler_syn/core/model/service_price_model.dart';
-import 'package:hustler_syn/screens/home/book_now/book_now_screen.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hustler_syn/screens/home/home_screen_view_model.dart';
-import 'package:hustler_syn/screens/post/all_post_screen.dart';
+import 'package:hustler_syn/screens/post/create_post_screen.dart';
 import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 import 'package:hustler_syn/screens/profile/notification_screen/notification_screen.dart';
 import 'package:provider/provider.dart';

@@ -9,7 +9,7 @@ import 'package:hustler_syn/core/constant/text_style.dart';
 import 'package:hustler_syn/core/custom_widgets/app_bar.dart';
 import 'package:hustler_syn/core/custom_widgets/custom_button.dart';
 import 'package:hustler_syn/core/enums/view_state.dart';
-import 'package:hustler_syn/screens/neccessary_widget/doted_border_container.dart';
+import 'package:hustler_syn/core/custom_widgets/doted_border_container.dart';
 import 'package:hustler_syn/screens/profile/edit_profile/edit_profile_view_model.dart';
 import 'package:provider/provider.dart';
 
