@@ -20,4 +20,5 @@ class PostModel {
     required this.languageKnown,
     required this.jobLocation,
   });
+  
 }

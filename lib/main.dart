@@ -5,14 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
-import 'package:hustler_syn/core/custom_widgets/profile_card.dart';
 import 'package:hustler_syn/firebase_options.dart';
-import 'package:hustler_syn/screens/auth/main_auth_screen/main_auth_screen.dart';
-import 'package:hustler_syn/screens/auth/main_auth_screen/sign_up/sign_up_screen.dart';
 import 'package:hustler_syn/screens/home/home_screen.dart';
+import 'package:hustler_syn/screens/home/home_screen_view_model.dart';
 import 'package:hustler_syn/screens/post/create_post_screen.dart';
-import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
-import 'package:hustler_syn/screens/root_screen/root_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,7 +59,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: Home());
+            home: HomeScreen());
       },
     );
   }

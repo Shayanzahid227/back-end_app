@@ -1,4 +1,4 @@
-class EventModel {
+class CreateNewPostModel {
   final String image;
   final String title;
   final String description;
@@ -7,7 +7,7 @@ class EventModel {
   final String date;
   final String day;
 
-  EventModel({
+  CreateNewPostModel({
     required this.image,
     required this.title,
     required this.description,
@@ -42,8 +42,8 @@ class EventModel {
     return days[now.weekday - 1];
   }
 
-  factory EventModel.fromJson(Map<String, dynamic> json) {
-    return EventModel(
+  factory CreateNewPostModel.fromJson(Map<String, dynamic> json) {
+    return CreateNewPostModel(
       image: json['image'] ?? '',
       title: json['title'] ?? '',
       description: json['description'] ?? '',

@@ -4,9 +4,13 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hustler_syn/core/base_view_model/base_view_model.dart';
+import 'package:hustler_syn/core/constant/app_assets.dart';
+import 'package:hustler_syn/core/model/create_new_post.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePostViewModel extends BaseViewModel {
+ 
+
   ///
   ///. business image picker in a row in end of screen
   ///
