@@ -10,6 +10,7 @@ import 'package:hustler_syn/screens/home/home_screen.dart';
 import 'package:hustler_syn/screens/home/home_screen_view_model.dart';
 import 'package:hustler_syn/screens/on_boarding/splash_screen.dart';
 import 'package:hustler_syn/screens/post/create_post_screen.dart';
+import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,22 +46,23 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
-            useInheritedMediaQuery: true,
-            builder: DevicePreview.appBuilder,
-            theme: ThemeData(
-              appBarTheme: AppBarTheme(
-                color: Colors.transparent,
-                surfaceTintColor: Colors.transparent,
-                foregroundColor: Colors.black,
-                elevation: 0,
-              ),
-              scaffoldBackgroundColor: backGroundColor,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          useInheritedMediaQuery: true,
+          builder: DevicePreview.appBuilder,
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              color: Colors.transparent,
+              surfaceTintColor: Colors.transparent,
+              foregroundColor: Colors.black,
+              elevation: 0,
             ),
-            home: SplashScreen());
+            scaffoldBackgroundColor: backGroundColor,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: ProfileScreen(),
+        );
       },
     );
   }
