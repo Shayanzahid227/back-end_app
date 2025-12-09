@@ -6,6 +6,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:hustler_syn/core/constant/colors.dart';
 import 'package:hustler_syn/firebase_options.dart';
+import 'package:hustler_syn/screens/profile/main_profile/profile_screen.dart';
 import 'package:hustler_syn/screens/root_screen/root_screen.dart';
 
 void main() async {
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: RootScreen(),
+          home: ProfileScreen(),
         );
       },
     );
