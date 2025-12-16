@@ -78,4 +78,8 @@ class EditProfileViewModel extends BaseViewModel {
       setState(ViewState.idle);
     }
   }
+
+  ///
+  ///
+  ///
 }

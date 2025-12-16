@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //
 
     return ChangeNotifierProvider(
-      create: (context) => HomeScreenViewModel(),
+      create: (context) => HomeScreenViewModel()..userData(),
       child: Consumer<HomeScreenViewModel>(
         builder: (context, model, child) => Scaffold(
           appBar: AppBar(
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             title: Text(
-              'HomeScreen',
+              model.appUser.name ?? 'no name',
               style: style20_600.copyWith(color: Colors.white),
             ),
             actions: [

@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'package:hustler_syn/core/base_view_model/base_view_model.dart';
 import 'package:hustler_syn/core/constant/app_assets.dart';
+import 'package:hustler_syn/core/enums/view_state.dart';
+import 'package:hustler_syn/core/model/app_user.dart';
 import 'package:hustler_syn/core/model/create_new_post.dart';
 import 'package:hustler_syn/core/model/post_model.dart';
+import 'package:hustler_syn/core/services/data_base_services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomeScreenViewModel extends BaseViewModel {
@@ -153,4 +156,32 @@ class HomeScreenViewModel extends BaseViewModel {
       description: "Try this delicious homemade pasta recipe tonight.",
     ),
   ];
+
+  ///
+  ///  get user data
+  ///
+
+  ///
+  ///. get user data
+  ///
+  DataBaseServices _db = DataBaseServices();
+  AppUserModel appUser = AppUserModel();
+  Future<void> userData() async {
+    try {
+      setState(ViewState.busy);
+
+      final fetchedUser = await _db.getCurrentUserData();
+
+      if (fetchedUser != null) {
+        appUser = fetchedUser;
+      } else {
+        print('No user data found');
+      }
+
+      setState(ViewState.idle);
+    } catch (e) {
+      print("Error: $e");
+      setState(ViewState.idle);
+    }
+  }
 }

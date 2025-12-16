@@ -22,7 +22,7 @@ class EditProfileScreen extends StatelessWidget {
       // call init() to load user data right after creation
       create: (context) {
         final vm = EditProfileViewModel();
-    
+
         return vm;
       },
       child: Consumer<EditProfileViewModel>(
@@ -62,9 +62,10 @@ class EditProfileScreen extends StatelessWidget {
                             alignment: Alignment.bottomRight,
                             children: [
                               CircleAvatar(
-                                radius: 60.r,
-                                backgroundColor: orangeColor,
-                                backgroundImage: AssetImage(AppAssets().userImage)   ),
+                                  radius: 60.r,
+                                  backgroundColor: orangeColor,
+                                  backgroundImage:
+                                      AssetImage(AppAssets().userImage)),
                               GestureDetector(
                                 onTap: model.pickImage,
                                 child: Positioned(
@@ -105,8 +106,8 @@ class EditProfileScreen extends StatelessWidget {
                     /// first container --> profile details
                     ///
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 15.w, vertical: 15.h),
                       margin: EdgeInsets.symmetric(vertical: 20.h),
                       decoration: BoxDecoration(
                           color: planCardColor,
@@ -210,13 +211,15 @@ class EditProfileScreen extends StatelessWidget {
                               final email = model.emailController.text.trim();
 
                               if (name.isEmpty) {
-                                Get.snackbar('Validation', 'Please enter your full name',
+                                Get.snackbar(
+                                    'Validation', 'Please enter your full name',
                                     snackPosition: SnackPosition.BOTTOM);
                                 return;
                               }
 
                               if (email.isEmpty) {
-                                Get.snackbar('Validation', 'Please enter your email',
+                                Get.snackbar(
+                                    'Validation', 'Please enter your email',
                                     snackPosition: SnackPosition.BOTTOM);
                                 return;
                               }
@@ -225,35 +228,39 @@ class EditProfileScreen extends StatelessWidget {
                               final Map<String, dynamic> data = {
                                 'name': name,
                                 'email': email,
-                                'phoneNumber': model.phoneController.text.trim(),
-                                'description': model.descriptionController.text.trim(),
+                                'phoneNumber':
+                                    model.phoneController.text.trim(),
+                                'description':
+                                    model.descriptionController.text.trim(),
                                 // Note: image uploading to storage is not handled here.
                               };
 
                               try {
-                                final success = await model.updateCurrentUserData(data);
+                                final success =
+                                    await model.updateCurrentUserData(data);
 
                                 if (success) {
-                                  // notify user + pop back to profile screen with `true`
                                   Get.snackbar(
                                     'Success',
                                     'Profile updated successfully',
                                     snackPosition: SnackPosition.BOTTOM,
-                                    backgroundColor: Colors.green.withOpacity(0.08),
+                                    backgroundColor:
+                                        Colors.green.withOpacity(0.08),
                                   );
 
-                                  // Return true so previous screen (ProfileScreen) can refresh
                                   Get.back(result: true);
                                 } else {
                                   Get.snackbar(
                                     'Error',
                                     'Failed to update profile',
                                     snackPosition: SnackPosition.BOTTOM,
-                                    backgroundColor: Colors.red.withOpacity(0.08),
+                                    backgroundColor:
+                                        Colors.red.withOpacity(0.08),
                                   );
                                 }
                               } catch (e) {
-                                Get.snackbar('Error', 'An unexpected error occurred',
+                                Get.snackbar(
+                                    'Error', 'An unexpected error occurred',
                                     snackPosition: SnackPosition.BOTTOM);
                                 print('update error: $e');
                               }

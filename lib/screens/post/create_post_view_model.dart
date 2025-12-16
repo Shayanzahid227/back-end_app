@@ -9,8 +9,6 @@ import 'package:hustler_syn/core/model/create_new_post.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePostViewModel extends BaseViewModel {
- 
-
   ///
   ///. business image picker in a row in end of screen
   ///
@@ -29,4 +27,8 @@ class CreatePostViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
+
+  ///
+  ///  create post
+  ///
 }

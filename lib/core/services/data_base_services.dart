@@ -44,6 +44,7 @@ class DataBaseServices {
       return null;
     }
   }
+
   ///
   ///. update current user data
   ///
@@ -67,18 +68,4 @@ class DataBaseServices {
       return null;
     }
   }
-   ///
-  ///. set user created post in data_base 
-  ///
-  // Future<bool> setUserCreatedPostInDataBase (PostModel postModel) async {
-  //   try {
-  //     await _db.collection('user_posts').doc(postModel.id).set(appUser.toJson());
-  //     Get.snackbar("Success", 'User information saved');
-  //     return true;
-  //   } catch (e) {
-  //     print('error: $e');
-  //     Get.snackbar("Error", 'User information not saved due to $e');
-  //     return false;
-  //   }
-  // }
 }

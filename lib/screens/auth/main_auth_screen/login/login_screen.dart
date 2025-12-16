@@ -72,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                     text: viewModel.isLoading ? "Processing..." : 'Login',
                     onTap: () {
                       if (!viewModel.isLoading) {
-                        viewModel.login();
+                        viewModel.loginUser();
                       }
                     },
                   ),
