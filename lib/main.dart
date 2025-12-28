@@ -47,23 +47,22 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          useInheritedMediaQuery: true,
-          builder: DevicePreview.appBuilder,
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              color: Colors.transparent,
-              surfaceTintColor: Colors.transparent,
-              foregroundColor: Colors.black,
-              elevation: 0,
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            useInheritedMediaQuery: true,
+            builder: DevicePreview.appBuilder,
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                color: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                foregroundColor: Colors.black,
+                elevation: 0,
+              ),
+              scaffoldBackgroundColor: backGroundColor,
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
             ),
-            scaffoldBackgroundColor: backGroundColor,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: RootScreen(),
-        );
+            home: ChatScreen());
       },
     );
   }
